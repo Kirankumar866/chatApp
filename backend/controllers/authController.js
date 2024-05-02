@@ -6,7 +6,7 @@ export const register = async(req,res)=>{
     try {
         const {fullName,userName,password,confirmPassword,gender} = req.body;
 
-        if(!fullName || !userName || !password || !gender){
+        if(!fullName || !userName || !password || !confirmPassword || !gender){
             return res.status(400).json({message: "provide all required fields"})
         }
         if(password !== confirmPassword){
@@ -37,12 +37,12 @@ export const register = async(req,res)=>{
         generatejwtToken(newUser,201,"User registered Succesfully!",res)
 
         }else{
-            res.status(400).json({error: "Invalid user data"})
+            res.status(400).json({message: "Invalid user data"})
         }   
     } catch (error) {
-        console.log("Error in Regisster controller", error.message)
+        console.log("Error in Register controller", error.message)
         res.status(500).json({
-            error : "Internal server error"
+            message : "Internal server error"
         })   
     }
     
@@ -51,7 +51,7 @@ export const register = async(req,res)=>{
 export const login = async(req,res)=>{
     try {
         const {userName,password} = req.body;
-        console.log(req.body)
+        
         if(!userName || !password ){
             return res.status(400).json({message: "provide username and password"})
         }

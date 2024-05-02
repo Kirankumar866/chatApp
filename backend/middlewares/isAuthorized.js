@@ -3,7 +3,8 @@ import User from "../models/userSchema.js";
 
 const isAuthorized = async(req,res,next)=>{
     try {
-        const {token} = req.cookies;
+        const {token} = req.cookies
+        
         if(!token){
             return res.status(404).json({message : "Unauthorized No Token provided"})
         }
@@ -25,7 +26,7 @@ const isAuthorized = async(req,res,next)=>{
     } catch (error) {
         console.log('Error in isAuthorized middleware:',error)
         return res.status(500).json({message : "Internal server error"})
-        
+
     }
 }
 

@@ -7,10 +7,10 @@ export const generatejwtToken = (user, statusCode, message, res) => {
         }
 
         const options = {
-            expires: new Date(Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
-            secure: false,
-            sameSite: "None",
-            httpOnly: true,
+            maxAge: 15 * 24 * 60 * 60 * 1000, // MS
+		httpOnly: true, // prevent XSS attacks cross-site scripting attacks
+		sameSite: "None", // CSRF attacks cross-site request forgery attacks
+		secure: true,
         };
 
         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '5d'});
@@ -23,6 +23,6 @@ export const generatejwtToken = (user, statusCode, message, res) => {
         });
     } catch (error) {
         console.error("Error generating JWT token:", error.message);
-        res.status(500).json({ success: false, error: "Internal server error" });
+        res.status(500).json({ success: false, message: "Internal server error" });
     }
 };

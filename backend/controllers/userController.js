@@ -20,6 +20,7 @@ export const getUsersForSidebar = async(req,res)=>{
 
 export const loggedInUser = async (req,res)=>{
     const loggedInUser = req.user;
+    
     try {
         res.status(200).json({
             success : true,
