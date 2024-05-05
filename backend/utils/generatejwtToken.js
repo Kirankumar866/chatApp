@@ -15,6 +15,7 @@ export const generatejwtToken = (user, statusCode, message, res) => {
 
         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '5d'});
 
+        console.log(token)
         res.status(statusCode).cookie("token", token, options).json({
             success: true,
             user,

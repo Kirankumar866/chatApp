@@ -61,7 +61,6 @@ export const login = async(req,res)=>{
         }
         // camparing haspassword with normal paswword
         const isMatch = await bcrypt.compare(password, user?.password || "");
-        console.log(isMatch)
         if(!isMatch){
             return res.status(400).json({message: "Invalid password or username"})
         }
@@ -79,10 +78,9 @@ export const login = async(req,res)=>{
 
 export const logout = (req,res)=>{
     res.status(201).cookie("token","",{
-        httpOnly: true,
+        
         expires: new Date(Date.now()),
-        secure: true,
-        sameSite: "None",
+        
     }).json({
         success: true,
         message: "User logged out successfully!!"
