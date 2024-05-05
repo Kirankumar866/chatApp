@@ -1,6 +1,7 @@
 import React, {useState}from 'react'
 import { Link } from 'react-router-dom'
 import { useLogin } from '../../hooks/useLogin'
+import Cookie from "js-cookie"
 
 const Login = () => {
     const [credentials, setCredentials] = useState({ 
@@ -14,6 +15,9 @@ const Login = () => {
     const handleLogin = async(e)=>{
         e.preventDefault();
         await login(credentials);
+        
+      
+
 
 
 

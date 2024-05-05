@@ -1,16 +1,34 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import {Context} from "../../main"
+import useConversation from '../../zustand/useConversation';
 
-const Message = () => {
+const Message = ({eachMessage}) => {
+  const {user} = useContext(Context);
+  const {selectedConversation} = useConversation()
+  const fromMe  = user?._id === eachMessage.senderId;
+  
+  const chatClassName = fromMe ? 'chat-end': 'chat-start';
+  const profilePic = fromMe ? user.profilePic : selectedConversation.profilePic;
+  const bubbleBgColor = fromMe ? 'bg-blue-500': ""
+  
+  const dateObject = new Date(eachMessage.createdAt);
+  const formattedTime = dateObject.toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true
+  });
+
+  
   return (
     
-            <div className="chat chat-end">
+            <div className={`chat ${chatClassName}`}>
                 <div className="chat-image avatar">
                     <div className="w-10 rounded-full">
-                    <img alt="Tailwind CSS chat bubble component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                    <img alt="Tailwind CSS chat bubble component" src={profilePic} />
                     </div>
                 </div>
-                <div className={`chat-bubble text-white bg-blue-500`}>Hi! What is upp?</div>
-                <div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>12:42</div>
+                <div className={`chat-bubble text-white ${bubbleBgColor}`}>{eachMessage.message}</div>
+                <div className='chat-footer opacity-50 text-xs flex gap-1 text-end'>{formattedTime}</div>
             </div>
         
     

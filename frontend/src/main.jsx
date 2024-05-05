@@ -1,12 +1,9 @@
-import React, {createContext,useState} from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import React, { createContext, useState } from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
 
-
-
-
-export const Context = createContext({})
+export const Context = createContext({});
 
 const AppWrapper = () => {
   // State for authorization status
@@ -22,11 +19,9 @@ const AppWrapper = () => {
   );
 };
 
-
+// Use createRoot().render() instead of ReactDOM.render
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AppWrapper />
-    
-    
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

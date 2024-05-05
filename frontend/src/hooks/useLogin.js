@@ -38,6 +38,7 @@ export const useLogin = () => {
   
         } else {
           console.log("Entered Axios An error occurred while login.")
+          setIsAuthorized(false)
           toast.error(res.data.message);
         }
       } catch (error) {

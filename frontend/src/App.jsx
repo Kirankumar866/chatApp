@@ -18,8 +18,10 @@ function App() {
       
       try {
         const response = await axios.get("http://localhost:8000/api/user/getuser",{withCredentials:true});
+
+       
         
-        setUser(response.data.user);
+        setUser(response.data.loggedInUser);
         setIsAuthorized(true);
       } catch (error) {
         setIsAuthorized(false)
@@ -31,9 +33,9 @@ function App() {
     fetchUser();
     
 
-  },[])
-  
-  
+  },[isAuthorized])
+
+ 
 
   return (
    <div className="p-4 h-screen flex items-center justify-center">
@@ -41,10 +43,8 @@ function App() {
     <Router>
     <Routes>
     <Route path ="/" element={isAuthorized ? <Home /> : <Navigate to={"/login"} />} />
-      <Route path = "/login" element={isAuthorized ? <Navigate to={"/"}/> : <Login/>} />
-      <Route path = "/signup" element={ isAuthorized ?<Navigate to={"/"}/> : <Signup/>} />
-      
-      
+      <Route path = "/login" element={isAuthorized ? <Navigate to="/"/> : <Login/>} />
+      <Route path = "/signup" element={ isAuthorized ?<Navigate to="/"/> : <Signup/>} />
     </Routes>
     <Toaster/>
 
