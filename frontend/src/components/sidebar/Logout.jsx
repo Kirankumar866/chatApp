@@ -17,7 +17,7 @@ const Logout = () => {
 
   return (
     <>
-    <div className='bg-transparent pl-2 relative top-10 transition duration-300 ease-in-out transform hover:scale-105'>
+    <div className='bg-transparent pl-2 mt-auto transition duration-300 ease-in-out transform hover:scale-105'>
         <BiLogOut className='w-6 h-6 fill-white cursor-pointer' onClick={handleLogout}/>
 
     </div>

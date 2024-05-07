@@ -4,14 +4,14 @@ import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
 import {BrowserRouter as Router, Routes, Route,Navigate} from "react-router-dom";
 import {Toaster} from "react-hot-toast"
-import {Context} from "./main"
+import {AuthContext} from "./main"
 import axios from "axios";
 import React, {useContext,useEffect} from "react"
 
 
 function App() {
 
-  const {isAuthorized, setIsAuthorized, setUser,user} = useContext(Context);
+  const {isAuthorized, setIsAuthorized, setUser,user} = useContext(AuthContext);
   
   useEffect(()=>{
     const fetchUser  = async()=>{
@@ -33,7 +33,7 @@ function App() {
     fetchUser();
     
 
-  },[isAuthorized])
+  },[])
 
  
 

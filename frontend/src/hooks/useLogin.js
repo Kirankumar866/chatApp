@@ -1,14 +1,14 @@
 import React, { useState, useContext} from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import {Context} from "../main"
+import {AuthContext} from "../main"
 import {useNavigate} from "react-router-dom"
 import Cookie from "js-cookie"
 
 export const useLogin = () => {
 
     const [loading, setLoading] = useState(false);
-    const {isAuthorized,setIsAuthorized,setUser} = useContext(Context);
+    const {isAuthorized,setIsAuthorized,setUser} = useContext(AuthContext);
     const navigateTo = useNavigate();
   
     const login = async ({ userName, password}) => {
@@ -24,6 +24,8 @@ export const useLogin = () => {
             },
           }
         )
+
+        
         
         
         
@@ -43,7 +45,7 @@ export const useLogin = () => {
         }
       } catch (error) {
           
-        console.error('Error during login:', error.response.data.message);
+        console.log('Error during login:', error);
         toast.error(error.response.data.message);
       } finally {
         setLoading(false);

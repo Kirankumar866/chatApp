@@ -2,11 +2,11 @@
 import React, { useState, useContext} from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import {Context} from "../main"
+import {AuthContext} from "../main"
 
 export const useSignup = () => {
   const [loading, setLoading] = useState(false);
-  const {isAuthorized,setIsAuthorized,setUser} = useContext(Context);
+  const {isAuthorized,setIsAuthorized,setUser} = useContext(AuthContext);
 
   const signup = async ({ fullName, userName, password, confirmPassword, gender }) => {
     setLoading(true);

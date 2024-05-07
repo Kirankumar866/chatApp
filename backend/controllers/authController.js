@@ -80,6 +80,10 @@ export const logout = (req,res)=>{
     res.status(201).cookie("token","",{
         
         expires: new Date(Date.now()),
+        httpOnly: true, // prevent XSS attacks cross-site scripting attacks
+             // prevent XSS attacks cross-site scripting attacks
+		sameSite: "None", // CSRF attacks cross-site request forgery attacks
+		secure: true,
         
     }).json({
         success: true,
