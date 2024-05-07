@@ -28,6 +28,8 @@ io.on("connection",(socket)=>{
     
     if(userId !== "undefined") userSocketMap[userId] = socket.id;
 
+
+    //sends to every user
     io.emit('getOnlineUsers',Object.keys(userSocketMap))
 
 
