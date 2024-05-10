@@ -7,23 +7,17 @@ import { useLogout } from '../../hooks/useLogout'
 
 const Logout = () => {
 
-  const logout = useLogout();
+  const { loading, logout } = useLogout();
 
-  const handleLogout = async()=>{
-  
-    await logout();
-
-  }
-
-  return (
-    <>
-    <div className='bg-transparent pl-2 mt-auto transition duration-300 ease-in-out transform hover:scale-105'>
-        <BiLogOut className='w-6 h-6 fill-white cursor-pointer' onClick={handleLogout}/>
-
-    </div>
-    </>
-    
-  )
+	return (
+		<div className='mt-auto'>
+			{!loading ? (
+				<BiLogOut className='w-6 h-6 text-white cursor-pointer' onClick={logout} />
+			) : (
+				<span className='loading loading-spinner'></span>
+			)}
+		</div>
+	);
 }
 
 export default Logout

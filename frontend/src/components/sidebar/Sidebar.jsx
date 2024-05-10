@@ -5,10 +5,10 @@ import Logout from './Logout'
 
 const Sidebar = () => {
   return (
-    <div className='border-r border-slate-500 p-4 flex flex-col'>
+    <div className='border-r w-1/2 border-slate-500 p-4 flex flex-col'>
         <SearchInput />
         <div className='divider px-2'></div>
-        <ChatList />
+        <ChatList className="mt-5" />
         <Logout/>
 
 

@@ -16,14 +16,14 @@ const ChatList = () => {
         (conversation) => conversation._id === selectedConversation._id
       );
       if (index !== -1) {
-        listRef.current.children[index].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        listRef.current.children[index].scrollIntoView({ behavior: 'smooth'});
       }
     }
   }, [selectedConversation]);
 
   
   return (
-    <div className='py-2 flex flex-col overflow-auto max-h-[450px]' ref={listRef}>
+    <div className='py-2 flex flex-col overflow-auto' ref={listRef}>
       {conversations.map((eachConversation,idx)=>
       <ChatContainer key={eachConversation._id} eachConversation = {eachConversation} emoji = {getRandomEmoji()} lastIdx = {idx === conversations.length-1}/>
 

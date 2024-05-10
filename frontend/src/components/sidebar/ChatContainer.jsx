@@ -16,14 +16,14 @@ const ChatContainer = ({eachConversation,emoji,lastIdx}) => {
   return (
     <>
     <div className={`flex gap-2 items-center hover:bg-sky-400 rounded cursor-pointer py-1 ${isSelected ? "bg-sky-500" : ""}`} onClick={() => setSelectedConversation(eachConversation)}>
-        <div className={`avatar ${isOnline ? "online": ""} pr-1 pl-1`}>
-            <div className="w-12 rounded-full">
+        <div className={`avatar ${isOnline ? "online": ""}`}>
+            <div className="w-10 sm:w-12 rounded-full">
                 <img src={eachConversation.profilePic} alt = "user avatar" />
             </div>
         </div>
         <div className='flex flex-1 justify-between gap-3'>
             
-                <p className='font-bold text-gray-200'>{eachConversation.fullName}</p>
+                <p className='text-xs sm:text-sm font-bold text-gray-200'>{eachConversation.fullName}</p>
                 <span className='text-xl'>{emoji}</span>
             
         </div>

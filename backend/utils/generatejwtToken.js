@@ -23,7 +23,7 @@ export const generatejwtToken = (user, statusCode, message, res) => {
             message,
             token
         });
-        console.log(token,message,user)
+        
     } catch (error) {
         console.error("Error generating JWT token:", error.message);
         res.status(500).json({ success: false, message: "Internal server error" });

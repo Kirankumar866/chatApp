@@ -7,12 +7,13 @@ import Cookie from "js-cookie"
 
 
 export const useLogout = ()=>{
+    const [loading, setLoading] = useState(false);
     const {setIsAuthorized,setUser} = useContext(AuthContext);
     const navigateTo = useNavigate();
 
     const logout = async()=>{
         
-        
+        setLoading(true);
         try {
             const res = await axios.post("http://localhost:8000/api/auth/logout",
             {withCredentials:true})
@@ -27,8 +28,10 @@ export const useLogout = ()=>{
             toast.error(error.response.data.message)
             setIsAuthorized(true);
             
+        }finally{
+            setLoading(false);
         }
     }
 
-    return logout;
+    return {loading,logout};
 }

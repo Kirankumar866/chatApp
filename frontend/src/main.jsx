@@ -27,15 +27,16 @@ const SocketContextProvider = ({children}) => {
   const { user } = useContext(AuthContext);
 
   // State for authorization status
-  const [socket,setSocket] = useState("");
+  const [socket,setSocket] = useState(null);
   const [onlineUsers, setOnlineUsers] = useState([]);
+  
 
   useEffect(()=>{
 
     if(user){
       const socket = io("http://localhost:8000",{
         query:{
-          userId : user._id
+          userId : user.fullName,
         }
       });
       setSocket(socket);
@@ -52,6 +53,7 @@ const SocketContextProvider = ({children}) => {
     }else{
       if(socket){
         socket.close();
+        console.log(onlineUsers)
         setSocket(null);
       }
     }
