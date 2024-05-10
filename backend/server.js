@@ -12,7 +12,7 @@ import { app, server } from "./socket/socket.js";
 dotenv.config()
 
 
-const PORT = process.env.PORT; // You can change 3000 to any available port number
+const port = process.env.PORT || 4000; // You can change 4000 to any available port number
 
 
 
