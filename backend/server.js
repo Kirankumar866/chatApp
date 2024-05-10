@@ -34,9 +34,9 @@ app.use("/api/message", messageRoutes)
 app.use("/api/user", usersRoutes)
 //app.use("/api/conversation", conversationRoutes)
 
-
+dbConnection();
 
 server.listen(PORT, () => {
-  dbConnection();
+  
   console.log(`Server running at ${PORT}`)
 })
